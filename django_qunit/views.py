@@ -22,6 +22,7 @@ def get_suite_context(request, path):
     # defaults
     suite['extra_urls'] = []
     suite['extra_media_urls'] = []
+    suite['extra_static_urls'] = []
 
     # load suite.json if present
     if 'suite.json' in files:
@@ -34,7 +35,7 @@ def get_suite_context(request, path):
     return {
         'files': [path + file for file in files if file.endswith('js')],
         'previous_directory': previous_directory,
-        'in_subdirectory': True and (previous_directory is not None) or False,
+        'in_subdirectory': previous_directory is not None,
         'subsuites': directories,
         'suite': suite,
     }
@@ -58,4 +59,5 @@ def parent_directory(path):
     prefix = '/'.join(path.split('/')[:-2])
     if prefix != '':
         prefix += '/'
+    print path, '->', prefix
     return prefix
