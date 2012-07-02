@@ -33,7 +33,7 @@ def get_suite_context(request, path):
     previous_directory = parent_directory(path)
 
     return {
-        'files': [path + f for f in files if file.endswith('js')],
+        'files': [path + f for f in files if f.endswith('js')],
         'previous_directory': previous_directory,
         'in_subdirectory': previous_directory is not None,
         'subsuites': directories,
