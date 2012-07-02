@@ -26,14 +26,14 @@ def get_suite_context(request, path):
 
     # load suite.json if present
     if 'suite.json' in files:
-        file = open(os.path.join(full_path, 'suite.json'), 'r')
-        json = file.read()
+        with open(os.path.join(full_path, 'suite.json'), 'r') as fi:
+            json = fi.read()
         suite.update(simplejson.loads(json))
 
     previous_directory = parent_directory(path)
 
     return {
-        'files': [path + file for file in files if file.endswith('js')],
+        'files': [path + f for f in files if file.endswith('js')],
         'previous_directory': previous_directory,
         'in_subdirectory': previous_directory is not None,
         'subsuites': directories,
