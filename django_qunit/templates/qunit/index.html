@@ -3,8 +3,9 @@
 <head>
   {% load static from staticfiles %}
     <title>QUnit Test Suite</title>
-  <link rel="stylesheet" href="{% url qunit_css %}" type="text/css" media="screen">
-  <script type="text/javascript" src="{% url qunit_js %}"></script>
+  <link rel="stylesheet" href="{% static 'qunit/qunit.css' %}" type="text/css" media="screen">
+  <script type="text/javascript" src="{% static 'qunit/qunit.js' %}"></script>
+  <script type="text/javascript" src="{% static 'qunit/ext/pavlov.js' %}"></script>
   {% for url in suite.extra_urls %}
     <script type="text/javascript" src="{{ url }}"></script>
   {% endfor %}
