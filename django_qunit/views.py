@@ -1,8 +1,10 @@
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 from django.conf import settings
 from django.utils import simplejson
 
 import os
+
 
 def get_suite_context(request, path):
     full_path = os.path.join(settings.QUNIT_TEST_DIRECTORY, path)
@@ -37,9 +39,12 @@ def get_suite_context(request, path):
         'suite': suite,
     }
 
+
 def run_tests(request, path):
     suite_context = get_suite_context(request, path)
-    return render_to_response('qunit/index.html', suite_context)
+    return render_to_response('qunit/index.html', suite_context,
+                              context_instance=RequestContext(request))
+
 
 def parent_directory(path):
     """
