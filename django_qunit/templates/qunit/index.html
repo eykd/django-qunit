@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="{% static 'qunit/qunit.css' %}" type="text/css" media="screen">
   <script type="text/javascript" src="{% static 'qunit/qunit.js' %}"></script>
   <script type="text/javascript" src="{% static 'qunit/ext/pavlov.js' %}"></script>
+  <script type="text/javascript" src="{% static 'sinon.js' %}"></script>
+  <script type="text/javascript" src="{% static 'qunit/ext/sinon-qunit.js' %}"></script>
   {% for url in suite.extra_urls %}
     <script type="text/javascript" src="{{ url }}"></script>
   {% endfor %}
